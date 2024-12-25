@@ -1,0 +1,4 @@
+streamlit
+numpy
+scikit-learn
+pickle-mixin  # Optional, jika menggunakan pickle yang lebih baru
