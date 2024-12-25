@@ -20,14 +20,14 @@ submit_lr = st.button("Submit Logistic Regression")
 
 # Memuat model sekali di awal
 with open("LOGISTIC/lr_fruit.pkl", mode='rb') as file:
-    modelfruitknn = pickle.load(file)
+    modelfruitlr = pickle.load(file)
 
 # Jika tombol ditekan, jalankan prediksi
 if submit_lr:
     # Menyiapkan data input
     datapred = np.array([D, W, R, G, B]).reshape(1, -1)
     # Prediksi menggunakan model Logistic Regression
-    result = modelfruitknn.predict(datapred)
+    result = modelfruitlr.predict(datapred)
     
     # Menampilkan hasil prediksi
     if result[0] == 0:
