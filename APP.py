@@ -17,13 +17,29 @@ B = float(st.number_input("Blue "))
 
 # Tombol submit
 submit_lr = st.button("Submit Logistic Regression")
+submit_svm = st.button("Submit Suport Vector Mechine")
 
 # Memuat model sekali di awal
 with open("LOGISTIC/lr_fruit.pkl", mode='rb') as file:
     modelfruitlr = pickle.load(file)
+with open("SVM/fruitsvm.pkl", mode='rb') as file:
+    modelfruitlr = pickle.load(file)
 
 # Jika tombol ditekan, jalankan prediksi
 if submit_lr:
+    # Menyiapkan data input
+    datapred = np.array([D, W, R, G, B]).reshape(1, -1)
+    # Prediksi menggunakan model Logistic Regression
+    result = modelfruitlr.predict(datapred)
+    
+    # Menampilkan hasil prediksi
+    if result[0] == 0:
+        st.write("Prediksi: Grapefruit")
+    elif result[0] == 1:
+        st.write("Prediksi: Orange")
+    else:
+        st.write("Prediksi tidak dikenal.")
+elif submit_svm:
     # Menyiapkan data input
     datapred = np.array([D, W, R, G, B]).reshape(1, -1)
     # Prediksi menggunakan model Logistic Regression
